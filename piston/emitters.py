@@ -192,6 +192,9 @@ class Emitter(object):
                 else:
                     get_fields = set(fields)
 
+                if hasattr(self.handler, 'extra_fields'):
+                    get_fields.update(set(self.handler.extra_fields))
+
                 if handler:
                     met_fields = self.method_fields(handler, get_fields)
                 elif self.handler:
